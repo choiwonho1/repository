@@ -15,4 +15,4 @@ public class WebSocketConfig implements WebSocketConfigurer {
                 .setAllowedOrigins("*"); // 모든 도메인 허용 (CORS 문제 해결)
     }
 }
-
+ 
