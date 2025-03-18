@@ -21,7 +21,7 @@
         };
 
         socket.onmessage = (event) => {
-            console.log("메시지 수신:", event.data);
+            console.log("메시지 수신 :", event.data);
             const li = document.createElement("li");
             li.textContent = event.data;
             document.getElementById("messages").appendChild(li);
