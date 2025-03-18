@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Test</title>
+</head>
+<body>
+    <h2>WebSocket Chat</h2>
+    <input type="text" id="messageInput" placeholder="메시지를 입력하세요">
+    <button onclick="sendMessage()">보내기</button>
+    <ul id="messages"></ul>
+
+    <script>
+    
+ 
+        const socket = new WebSocket("ws://localhost:9090/chat");
+
+        socket.onopen = () => {
+            console.log("WebSocket 연결 성공!");
+        };
+
+        socket.onmessage = (event) => {
+            console.log("메시지 수신:", event.data);
+            const li = document.createElement("li");
+            li.textContent = event.data;
+            document.getElementById("messages").appendChild(li);
+        };
+
+        socket.onclose = () => {
+            console.log("WebSocket 연결 종료!");
+        };
+
+        function sendMessage() {
+            const message = document.getElementById("messageInput").value;
+            socket.send(message);
+        }
+     
+        
+    </script>
+</body>
+</html>
